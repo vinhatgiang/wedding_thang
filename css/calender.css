@@ -1,0 +1,124 @@
+
+.flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.containercalender{
+  width: 100%;
+  /* height: 100vh; */
+}
+
+
+/* Calendar */
+.calendar{
+  width: 100%;
+  /* height: 500px; */
+  background: white;
+}
+.calendar .month{
+  width: 100%;
+  height: 20%;
+  padding: 20px 30px;
+  background: #ff9a8b;
+  background-image: linear-gradient(
+    90deg,
+    #e8e9b3 0%,
+    #e8e9b3 55%,
+    #e8e9b3 100%
+  );
+  color: #295138;
+  justify-content: space-between !important;
+  text-align: center;
+}
+.calendar .month img{
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+.month img:hover{
+  opacity: 0.8;
+}
+.month h1{
+  text-transform: uppercase;
+  font-size: 30px;
+}
+.month p{
+  font-weight: 300;
+  color: rgba(0,0,0,0.8)
+}
+.nd p {
+  color: #295138;
+}
+.weekngay{
+  width: 100%;
+  padding: 10px;
+  height: 10%;
+  padding: 0;
+}
+.weekngay div{
+  width: calc(100% / 7);
+  height: 80%;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 5px;
+  transition: 0.2s;
+  color: #295138;
+
+}
+.ngay{
+  width: 100%;
+  height: 70%;
+  flex-wrap: wrap;
+  margin: auto;
+  padding: 30px 10px;
+  padding-top: 0;
+}
+.ngay div{
+  width: calc(100% / 7);
+  height: calc(400px / 7);
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400;
+  color: #295138;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.1s;
+}
+.ngay .previous-day,
+.ngay .next-ngay{
+  color: rgba(0,0,0,0.35)
+}
+.ngay .today{
+  background: #ff6a88;
+  cursor: pointer;
+  color: white;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.ngay .today1{
+  background: #534b4b1c;
+  cursor: pointer;
+  color: #295138;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.ngay .today:hover{
+  background: #f95c79;
+}
+.ngay div:not(.today):hover{
+  border-radius: 0;
+  border: 0.5px solid black;
+  background: rgba(0,0,0,0.25);
+  cursor: pointer;
+}
+
+.prev,
+.next{
+  cursor: pointer;
+}
