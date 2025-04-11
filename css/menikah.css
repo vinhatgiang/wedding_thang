@@ -377,12 +377,13 @@ h2 {
 }
 
 .ampersand {
-  font-size: 5rem;
+  font-size: 2rem;
   font-family: 'Amatic SC', sans-serif;
-  color: #FFFFFF;
-  line-height: 5rem;
+  line-height: 2rem;
   display: inline-block;
   vertical-align: middle;
+  color: white !important;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
 .bodytext {
