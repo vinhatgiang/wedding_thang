@@ -424,12 +424,6 @@ h2 {
   vertical-align: middle;
 }
 
-.footer {
-  background: linear-gradient(145deg, var(--accent-color), var(--primary-color));
-  position: relative;
-  overflow: hidden;
-}
-
 .footer:before {
   content: '';
   position: absolute;
@@ -449,21 +443,32 @@ h2 {
 .footer {
   bottom: 0;
   width: 100vw;
-  padding: 10px 10px 10px 10px;
-  line-height: 25px;
+  padding: 15px 10px; /* Tăng padding để tạo khoảng trống */
+  line-height: 1.6; /* Giãn dòng tốt hơn */
   text-align: center;
-  vertical-align: middle;
-  background: #e8e9b3 ;
-  color: whitesmoke;
+  background: rgb(41, 81, 56); /* Màu nâu đậm tương phản tốt */
+  color: #fff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Thêm đổ bóng nhẹ */
 }
 
 .footer p {
-  color: white;
+  color: #fff;
   font-weight: 500;
-  font-size: 10pt;
-  display: inline-block;
-  vertical-align: middle;
-  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.1rem; /* Tăng nhẹ kích thước chữ */
+  margin: 8px 0; /* Thêm khoảng cách trên/dưới */
+  font-family: 'Roboto Condensed', sans-serif; /* Dùng font có chân dễ đọc */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Thêm bóng chữ */
+}
+
+.social-links a {
+  color: #fff !important;
+  margin: 0 12px;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
 }
 
 
