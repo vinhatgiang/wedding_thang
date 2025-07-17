@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script to install Git hooks to prevent/warn about commits to develop branch
+# Script to install Git hook: always use pre-commit-warning
 
 # Display header
 echo "====================================="
@@ -15,24 +15,8 @@ if [ ! -d ".git" ]; then
     exit 1
 fi
 
-# Prompt for hook type
-echo "Which hook would you like to install?"
-echo "1) Strict (prevents commits to develop branch)"
-echo "2) Warning only (warns but allows commits to develop branch)"
-echo
-read -p "Enter your choice (1 or 2): " choice
-
-# Set source file based on choice
-if [ "$choice" = "1" ]; then
-    SOURCE="pre-commit"
-    echo "Installing strict hook..."
-elif [ "$choice" = "2" ]; then
-    SOURCE="pre-commit-warning"
-    echo "Installing warning-only hook..."
-else
-    echo "Invalid choice. Please enter 1 or 2."
-    exit 1
-fi
+SOURCE="pre-commit-warning"
+echo "Installing warning-only hook..."
 
 # Check if pre-commit hook already exists
 if [ -f ".git/hooks/pre-commit" ]; then

@@ -1,9 +1,0 @@
-BRANCH=$(git symbolic-ref --short HEAD)
-
-if [ "$BRANCH" = "develop" ]; then
-    echo "ERROR: Direct commits to the develop branch are not allowed."
-    osascript -e 'display alert "ERROR" message "Direct commits to the develop branch are not allowed. Please create a feature branch and submit a pull request instead."'
-    exit 1
-fi
-
-exit 0
