@@ -8,6 +8,21 @@ BRANCH=$(git symbolic-ref --short HEAD)
 if [ "$BRANCH" = "develop" ]; then
     echo "WARNING: You're committing directly to the develop branch!"
     echo "This is generally not recommended. Feature branches and pull requests are preferred."
+    CANCEL=0
+    # Hiển thị alert trên macOS
+    if [ "$(uname)" = "Darwin" ]; then
+        RESULT=$(osascript -e 'display alert "WARNING" message "You are committing directly to the develop branch! Feature branches and pull requests are preferred." buttons {"Cancel", "Continue"} default button "Continue"')
+        echo "$RESULT" | grep -q "button returned:Cancel" && CANCEL=1
+    fi
+    # Hiển thị alert trên Windows (Git Bash hoặc Command Prompt)
+    if [ "$(uname -o 2>/dev/null)" = "Msys" ] || [ "$(uname -o 2>/dev/null)" = "Cygwin" ]; then
+        powershell.exe -Command "$res = [System.Windows.MessageBox]::Show('You are committing directly to the develop branch! Feature branches and pull requests are preferred.', 'WARNING', 'OKCancel', 'Warning'); if ($res -eq 'Cancel') { exit 1 }"
+        [ $? -ne 0 ] && CANCEL=1
+    fi
+    if [ $CANCEL -eq 1 ]; then
+        echo "Commit cancelled."
+        exit 1
+    fi
     echo "Press Ctrl+C to cancel or Enter to continue anyway..."
     read
 fi
