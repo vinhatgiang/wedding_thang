@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Pre-commit hook to warn about direct commits to develop branch
+# Get the current branch name
+BRANCH=$(git symbolic-ref --short HEAD)
+
+# Check if the current branch is develop
+if [ "$BRANCH" = "develop" ]; then
+    echo "WARNING: You're committing directly to the develop branch!"
+    echo "This is generally not recommended. Feature branches and pull requests are preferred."
+    echo "Press Ctrl+C to cancel or Enter to continue anyway..."
+    read
+fi
+
+exit 0
