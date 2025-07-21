@@ -1,0 +1,35 @@
+#!/bin/sh
+# Git Hook: pre-commit
+#
+# Prevents commits to protected branches.
+# Note: Commit message validation is handled by the `commit-msg` hook.
+
+# --- UTILITY: Cross-Platform Error Dialog ---
+show_error() {
+    message="$1"
+    title="Git Hook Error: pre-commit"
+
+    case "$(uname -s)" in
+        Darwin)
+            osascript -e "display dialog \"$message\" with title \"$title\" with icon stop buttons {\"OK\"} default button \"OK\"" >/dev/null
+            ;;
+        CYGWIN*|MINGW*|MSYS*)
+            powershell.exe -Command "Add-Type -AssemblyName PresentationFramework; [System.Windows.MessageBox]::Show('$message', '$title', 'OK', 'Error')"
+            ;;
+        *)
+            printf "\n\033[31m%s\n%s\033[0m\n\n" "$title" "$message"
+            ;;
+    esac
+}
+
+# --- LOGIC ---
+
+# 1. Block commits to protected branches
+current_branch=$(git symbolic-ref --short HEAD)
+if [ "$current_branch" = "main" ] || [ "$current_branch" = "develop" ]; then
+    show_error "Direct commits to '$current_branch' are forbidden. Please use a feature branch and create a pull request."
+    exit 1
+fi
+
+# If the branch check passes, exit with success.
+exit 0 
